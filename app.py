@@ -1,24 +1,30 @@
-from telegram import Bot, Update, KeyboardButton, ReplyKeyboardMarkup, WebAppInfo
+from telegram import Update, KeyboardButton, ReplyKeyboardMarkup, WebAppInfo
 from telegram.ext import Updater, CommandHandler
 
-# Замените YOUR_BOT_TOKEN вашим токеном
+# Токен бота
 BOT_TOKEN = "6771074134:AAFrjUSoctJU-JLCVNMImv3svcjMQFohGqo"
 
+# URL приложения
+WEB_APP_URL = "https://soft-beignet-57ae0f.netlify.app/"
+
 def start(update, context):
-    chat_id = update.effective_chat.id
-    web_app_url = "https://soft-beignet-57ae0f.netlify.app/"  # Укажите ваш URL
-    button = KeyboardButton(text="Запустить игру 🐝", web_app=WebAppInfo(url=web_app_url))
+    """Обработчик команды /start."""
+    button = KeyboardButton(text="Запустить игру 🐝", web_app=WebAppInfo(url=WEB_APP_URL))
     keyboard = [[button]]
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
-    
-    context.bot.send_message(chat_id=chat_id, text="Добро пожаловать в Bee Hive Empire! Нажмите кнопку ниже, чтобы начать игру.", reply_markup=reply_markup)
+
+    update.message.reply_text(
+        "Добро пожаловать в Bee Hive Empire! Нажмите кнопку ниже, чтобы начать игру.",
+        reply_markup=reply_markup,
+    )
 
 def main():
+    """Запуск бота."""
     updater = Updater(BOT_TOKEN, use_context=True)
     dp = updater.dispatcher
-    
+
     dp.add_handler(CommandHandler("start", start))
-    
+
     updater.start_polling()
     updater.idle()
 

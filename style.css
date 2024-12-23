@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f7f6f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+
+.honey-display {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.hive {
+    width: 100%;
+    max-width: 150px;
+    height: 150px;
+    background: #ffcc00;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+}
+
+.collect-button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+}
+
+.collect-button:hover {
+    background: #0056b3;
+}
+
+.upgrades {
+    margin-top: 20px;
+}
+
+.upgrade-button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+}
+
+.upgrade-button:hover {
+    background: #1e7e34;
+}
+
+@media (max-width: 768px) {
+    .honey-display {
+        font-size: 20px;
+    }
+
+    .collect-button, .upgrade-button {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
