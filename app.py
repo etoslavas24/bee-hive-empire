@@ -6,7 +6,7 @@ BOT_TOKEN = "6771074134:AAFrjUSoctJU-JLCVNMImv3svcjMQFohGqo"
 
 def start(update, context):
     chat_id = update.effective_chat.id
-    web_app_url = "https://your-deployed-webapp-url.com"  # Укажите ваш URL
+    web_app_url = "https://soft-beignet-57ae0f.netlify.app/"  # Укажите ваш URL
     button = KeyboardButton(text="Запустить игру 🐝", web_app=WebAppInfo(url=web_app_url))
     keyboard = [[button]]
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
