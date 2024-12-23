@@ -8,20 +8,22 @@
 </head>
 <body>
     <div class="container">
-        <div class="honey-display">
-            🐝 Мед в улье: <span id="currentHoney">0</span>
-        </div>
-        <div class="total-honey-display">
-            🏆 Всего собрано меда: <span id="totalHoney">0</span>
-        </div>
-
-        <div class="hive">🐝 Улей</div>
-
-        <div class="progress-bar">
-            <div class="progress" id="progress"></div>
+        <!-- Прогресс добычи -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <div class="progress-center">
+                <img src="bee.png" alt="Улей" class="center-image">
+            </div>
         </div>
 
-        <button class="collect-button" id="collectButton">Собрать мед</button>
+        <!-- Кнопки внизу -->
+        <div class="button-row">
+            <button class="round-button" id="upgradeButton">⚙️</button>
+            <button class="round-button main-button" id="collectButton">🍯</button>
+            <button class="round-button" id="referralsButton">👥</button>
+        </div>
     </div>
     <script src="main.js"></script>
 </body>

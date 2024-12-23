@@ -1,102 +1,100 @@
+/* Общий фон */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: #f7f6f2;
+    background-color: #9d7463; /* Mocha Mousse, 17-1230 */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
+    color: #fff;
 }
 
-.container {
-    text-align: center;
-    width: 90%;
-    max-width: 400px;
-}
-
-.honey-display {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.hive {
-    width: 100%;
-    max-width: 150px;
-    height: 150px;
-    background: #ffcc00;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+/* Контейнер прогресса */
+.progress-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
     margin: 20px auto;
 }
 
-.collect-button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 15px 20px;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-    width: 100%;
-}
-
-.collect-button:hover {
-    background: #0056b3;
-}
-
-.upgrades {
-    margin-top: 20px;
-}
-
-.upgrade-button {
-    background: #28a745;
-    color: white;
-    border: none;
-    padding: 15px;
-    margin: 10px 0;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-    width: 100%;
-}
-
-.upgrade-button:hover {
-    background: #1e7e34;
-}
-
-@media (max-width: 768px) {
-    .honey-display {
-        font-size: 20px;
-    }
-
-    .collect-button, .upgrade-button {
-        font-size: 16px;
-        padding: 10px;
-    }
-}
-/* Прогресс-бар */
 .progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 400px;
-    height: 20px;
-    background: #e0e0e0;
-    border-radius: 10px;
-    margin: 20px 0;
+    height: 100%;
+    border-radius: 50%;
+    background: #2d2d2d;
     overflow: hidden;
-    position: relative;
 }
 
 .progress {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 0;
     height: 100%;
     background: #ffcc00;
-    transition: width 0.1s linear;
+    transform-origin: center;
+    border-radius: 50%;
+}
+
+.progress-center {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #2d2d2d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Кнопки внизу */
+.button-row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 20px;
+}
+
+.round-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.round-button:hover {
+    transform: scale(1.1);
+    background: #ffcc00;
+}
+
+.main-button {
+    background: #ffd700;
+    font-size: 28px;
+}
+
+.round-button:active {
+    transform: scale(0.9);
 }
