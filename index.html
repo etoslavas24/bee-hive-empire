@@ -9,17 +9,19 @@
 <body>
     <div class="container">
         <div class="honey-display">
-            🐝 Мед: <span id="honey">0</span>
+            🐝 Мед в улье: <span id="currentHoney">0</span>
+        </div>
+        <div class="total-honey-display">
+            🏆 Всего собрано меда: <span id="totalHoney">0</span>
         </div>
 
         <div class="hive">🐝 Улей</div>
 
-        <button class="collect-button" id="collectButton">Собрать мед</button>
-
-        <div class="upgrades">
-            <button class="upgrade-button" id="upgradeRateButton">Улучшить производство (100 меда)</button>
-            <button class="upgrade-button" id="upgradeCapacityButton">Увеличить вместимость (200 меда)</button>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
         </div>
+
+        <button class="collect-button" id="collectButton">Собрать мед</button>
     </div>
     <script src="main.js"></script>
 </body>

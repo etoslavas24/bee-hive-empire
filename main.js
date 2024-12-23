@@ -1,60 +1,64 @@
 // Инициализация данных
-let honey = parseInt(localStorage.getItem('honey')) || 0;
-let productionRate = parseInt(localStorage.getItem('productionRate')) || 1; // Мед в час
-let collectInterval = parseInt(localStorage.getItem('collectInterval')) || 60; // Таймер в секундах
+let currentHoney = 0;
+let totalHoney = parseInt(localStorage.getItem('totalHoney')) || 0;
+let productionRate = 1; // Скорость производства меда (мед за секунду)
+let productionTime = 7200; // Время цикла производства в секундах (2 часа)
+let progress = 0;
+let isProducing = false;
 
-const honeyDisplay = document.getElementById('honey');
+const currentHoneyDisplay = document.getElementById('currentHoney');
+const totalHoneyDisplay = document.getElementById('totalHoney');
 const collectButton = document.getElementById('collectButton');
-const upgradeRateButton = document.getElementById('upgradeRateButton');
-const upgradeCapacityButton = document.getElementById('upgradeCapacityButton');
+const progressBar = document.getElementById('progress');
 
-// Обновление меда в интерфейсе
-function updateHoneyDisplay() {
-    honeyDisplay.textContent = honey;
+// Обновление интерфейса
+function updateDisplays() {
+    currentHoneyDisplay.textContent = currentHoney;
+    totalHoneyDisplay.textContent = totalHoney;
 }
 
-// Производство меда каждые collectInterval секунд
-setInterval(() => {
-    honey += productionRate;
-    localStorage.setItem('honey', honey);
-    updateHoneyDisplay();
-}, collectInterval * 1000);
+// Запуск производства
+function startProduction() {
+    if (isProducing) return;
+    isProducing = true;
+    progress = 0;
+    currentHoney = 0;
 
-// Обработка кнопки сбора меда
+    const interval = setInterval(() => {
+        if (progress >= 100) {
+            clearInterval(interval);
+            isProducing = false;
+            collectButton.disabled = false;
+            alert("Производство остановлено! Соберите мед.");
+            return;
+        }
+
+        progress += (100 / productionTime) * productionRate;
+        currentHoney += productionRate / productionTime;
+        progressBar.style.width = `${progress}%`;
+        updateDisplays();
+    }, 1000);
+}
+
+// Сбор меда
 collectButton.addEventListener('click', () => {
-    alert(`Вы собрали ${honey} меда!`);
-    honey = 0; // Сбрасываем мед после сбора
-    localStorage.setItem('honey', honey);
-    updateHoneyDisplay();
-});
-
-// Улучшение производства
-upgradeRateButton.addEventListener('click', () => {
-    if (honey >= 100) {
-        honey -= 100;
-        productionRate *= 2;
-        localStorage.setItem('honey', honey);
-        localStorage.setItem('productionRate', productionRate);
-        alert('Производство улучшено!');
-        updateHoneyDisplay();
-    } else {
-        alert('Недостаточно меда!');
+    if (!isProducing && progress < 100) {
+        alert("Мед еще не готов. Подождите!");
+        return;
     }
+
+    totalHoney += Math.floor(currentHoney);
+    localStorage.setItem('totalHoney', totalHoney);
+
+    alert(`Вы собрали ${Math.floor(currentHoney)} меда!`);
+    currentHoney = 0;
+    progress = 0;
+    progressBar.style.width = "0%";
+    collectButton.disabled = true;
+    updateDisplays();
+    startProduction();
 });
 
-// Увеличение времени между сборами
-upgradeCapacityButton.addEventListener('click', () => {
-    if (honey >= 200) {
-        honey -= 200;
-        collectInterval *= 2;
-        localStorage.setItem('honey', honey);
-        localStorage.setItem('collectInterval', collectInterval);
-        alert('Вместимость увеличена!');
-        updateHoneyDisplay();
-    } else {
-        alert('Недостаточно меда!');
-    }
-});
-
-// Первое обновление интерфейса
-updateHoneyDisplay();
+// Инициализация
+updateDisplays();
+startProduction();
