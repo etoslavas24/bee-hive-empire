@@ -1,63 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-        <title>Bee Hive Empire</title>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Bee Hive Empire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
 <body>
-    <div class="app" id="app">
-        <!-- Шестерёнка -->
-        <div class="settings">
-            <button id="settingsButton">⚙️</button>
-        </div>
+    <div class="container">
+        <!-- Навигация -->
+        <header class="header">
+            <button id="settingsButton" class="settings-button">⚙️</button>
+        </header>
 
-        <!-- Центральный блок -->
-        <div class="main-display">
-            <div class="income">
+        <!-- Основной контент -->
+        <main class="main">
+            <!-- Добыча меда -->
+            <section class="income-section">
                 <p class="income-title">Добывается:</p>
                 <p class="income-value">🍯 <span id="income">0.0000</span> в секунду</p>
-            </div>
-            <div class="balance">
+            </section>
+
+            <!-- Баланс -->
+            <section class="balance-section">
                 Баланс меда: 🍯 <span id="balance">0.0000</span>
-            </div>
-        </div>
+            </section>
 
-        <!-- Кнопка "Собрать мед" -->
-        <div class="collect-section">
-            <button id="collectButton" class="collect-button">Собрать мед</button>
-        </div>
+            <!-- Кнопка "Собрать мед" -->
+            <section class="collect-section">
+                <div class="collect-container">
+                    <img src="icn.webp" alt="Улей" class="collect-icon">
+                    <button id="collectButton" class="collect-button">Собрать мед</button>
+                </div>
+            </section>
 
-        <!-- Нижнее меню -->
-        <div class="menu">
-            <button class="menu-button" id="missionsButton">
-                <div class="icon">🎯</div>
-                <div class="label">Миссии</div>
-            </button>
-            <button class="menu-button" id="upgradeButton">
-                <div class="icon">⚡</div>
-                <div class="label">Улучшения</div>
-            </button>
-            <button class="menu-button" id="friendsButton">
-                <div class="icon">🤝</div>
-                <div class="label">Друзья</div>
-            </button>
-        </div>
+            <!-- Нижнее меню -->
+            <section class="menu-section">
+                <button class="menu-button" id="missionsButton">
+                    <div class="icon">🎯</div>
+                    <div class="label">Миссии</div>
+                </button>
+                <button class="menu-button" id="upgradeButton">
+                    <div class="icon">⚡</div>
+                    <div class="label">Улучшения</div>
+                </button>
+                <button class="menu-button" id="friendsButton">
+                    <div class="icon">🤝</div>
+                    <div class="label">Друзья</div>
+                </button>
+            </section>
+        </main>
 
-        <!-- Бургер-меню -->
-        <div class="burger-menu hidden" id="burgerMenu">
+        <!-- Всплывающее меню -->
+        <aside class="burger-menu hidden" id="burgerMenu">
             <ul>
                 <li><a href="#">📄 Документация</a></li>
                 <li><a href="#">Инкогнито 1</a></li>
                 <li><a href="#">Инкогнито 2</a></li>
             </ul>
-        </div>
-
-        <script src="main.js"></script>
+        </aside>
     </div>
+    <script src="main.js"></script>
 </body>
 </html>
