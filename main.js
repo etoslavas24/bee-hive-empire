@@ -1,76 +1,40 @@
-// Производство меда
-let currentHoney = 0;
-let totalHoney = parseFloat(localStorage.getItem('totalHoney')) || 0; // Общий мед
-let progress = 0;
-let productionRate = 0.0083; // Скорость производства меда (0.5 в минуту)
-let productionTime = 7200; // Цикл производства (2 часа)
-let isProducing = false;
-
-const currentHoneyDisplay = document.getElementById('currentHoney');
-const totalHoneyDisplay = document.getElementById('totalHoney');
-const progressBar = document.getElementById('progress');
+const incomeDisplay = document.getElementById('income');
+const totalBalanceDisplay = document.getElementById('balance');
 const collectButton = document.getElementById('collectButton');
-const upgradeButton = document.getElementById('upgradeButton');
-const referralsButton = document.getElementById('referralsButton');
+const burgerMenu = document.getElementById('burgerMenu');
+const settingsButton = document.getElementById('settingsButton');
 
-// Обновление отображения
-function updateDisplays() {
-    currentHoneyDisplay.textContent = currentHoney.toFixed(3); // До 3 знаков
-    totalHoneyDisplay.textContent = totalHoney.toFixed(3);
-}
+let incomeRate = 0.0083; // Мед в секунду
+let totalBalance = 0;
+let currentHoney = 0;
+let storageLimit = 60; // Максимальное хранилище (мед за 2 часа)
 
-// Сохранение данных
-function saveData() {
-    localStorage.setItem('totalHoney', totalHoney);
-}
-
-// Запуск производства меда
+// Производство меда
 function startProduction() {
-    if (isProducing) return;
-    isProducing = true;
-
-    const interval = setInterval(() => {
-        if (progress >= 100) {
-            clearInterval(interval);
-            isProducing = false;
-            alert("Производство завершено! Соберите мед.");
-            return;
+    setInterval(() => {
+        if (currentHoney < storageLimit) {
+            currentHoney += incomeRate;
+            incomeDisplay.textContent = currentHoney.toFixed(4);
         }
-
-        progress += (100 / productionTime); // Увеличиваем прогресс
-        currentHoney += productionRate; // Увеличиваем текущий мед
-        progressBar.style.width = `${progress}%`;
-        updateDisplays();
     }, 1000);
 }
 
 // Сбор меда
 collectButton.addEventListener('click', () => {
-    if (!isProducing && progress < 100) {
-        alert("Мед еще не готов. Подождите!");
-        return;
+    if (currentHoney > 0) {
+        totalBalance += currentHoney;
+        currentHoney = 0;
+        totalBalanceDisplay.textContent = totalBalance.toFixed(4);
+        incomeDisplay.textContent = currentHoney.toFixed(4);
+    } else {
+        alert("Нет меда для сбора!");
     }
-
-    totalHoney += currentHoney; // Добавляем текущий мед в общий
-    currentHoney = 0; // Обнуляем текущий мед
-    progress = 0; // Сбрасываем прогресс
-    progressBar.style.width = "0%";
-    alert(`Вы собрали ${totalHoney.toFixed(3)} меда!`);
-    saveData();
-    updateDisplays();
-    startProduction();
 });
 
-// Улучшения
-upgradeButton.addEventListener('click', () => {
-    alert("Раздел улучшений в разработке.");
+// Открытие/закрытие бургер-меню
+settingsButton.addEventListener('click', () => {
+    burgerMenu.classList.toggle('hidden');
 });
 
-// Рефералы
-referralsButton.addEventListener('click', () => {
-    alert("Раздел рефералов в разработке.");
-});
-
-// Инициализация
-updateDisplays();
+// Запуск игры
 startProduction();

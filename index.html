@@ -1,38 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bee Hive Empire</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <title>Bee Hive Empire</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    </head>
 <body>
-    <div class="container">
-        <!-- Счётчики -->
-        <div class="honey-display">
-            🐝 Мед в улье: <span id="currentHoney">0</span>
-        </div>
-        <div class="total-honey-display">
-            🏆 Всего добыто меда: <span id="totalHoney">0</span>
+    <div class="app" id="app">
+        <!-- Шестерёнка -->
+        <div class="settings">
+            <button id="settingsButton">⚙️</button>
         </div>
 
-        <!-- Прогресс добычи -->
-        <div class="progress-container">
-            <div class="progress-bar">
-                <div class="progress" id="progress"></div>
+        <!-- Центральный блок -->
+        <div class="main-display">
+            <div class="income">
+                <p class="income-title">Добывается:</p>
+                <p class="income-value">🍯 <span id="income">0.0000</span> в секунду</p>
             </div>
-            <div class="progress-center">
-                <img src="bee.png" alt="Улей" class="center-image">
+            <div class="balance">
+                Баланс меда: 🍯 <span id="balance">0.0000</span>
             </div>
         </div>
 
-        <!-- Кнопки внизу -->
-        <div class="button-row">
-            <button class="round-button" id="upgradeButton">⚙️</button>
-            <button class="round-button main-button" id="collectButton">🍯</button>
-            <button class="round-button" id="referralsButton">👥</button>
+        <!-- Кнопка "Собрать мед" -->
+        <div class="collect-section">
+            <button id="collectButton" class="collect-button">Собрать мед</button>
         </div>
+
+        <!-- Нижнее меню -->
+        <div class="menu">
+            <button class="menu-button" id="missionsButton">
+                <div class="icon">🎯</div>
+                <div class="label">Миссии</div>
+            </button>
+            <button class="menu-button" id="upgradeButton">
+                <div class="icon">⚡</div>
+                <div class="label">Улучшения</div>
+            </button>
+            <button class="menu-button" id="friendsButton">
+                <div class="icon">🤝</div>
+                <div class="label">Друзья</div>
+            </button>
+        </div>
+
+        <!-- Бургер-меню -->
+        <div class="burger-menu hidden" id="burgerMenu">
+            <ul>
+                <li><a href="#">📄 Документация</a></li>
+                <li><a href="#">Инкогнито 1</a></li>
+                <li><a href="#">Инкогнито 2</a></li>
+            </ul>
+        </div>
+
+        <script src="main.js"></script>
     </div>
-    <script src="main.js"></script>
 </body>
 </html>

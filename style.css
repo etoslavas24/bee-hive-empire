@@ -1,101 +1,154 @@
-/* Общий фон */
+/* Общий стиль */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background: url('image/img1.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background: #f8f5f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.app {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    height: 100vh; /* Полная высота экрана */
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 100vh;
+    align-items: center;
+}
+
+/* Шестерёнка */
+.settings {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.settings button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Центральный блок */
+.main-display {
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+.income-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    color: #333;
+}
+
+.income-value {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 5px 0;
+    color: #f0a500;
+}
+
+.balance {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Кнопка "Собрать мед" */
+.collect-section {
+    margin: 20px 0;
+}
+
+.collect-button {
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background: #f0a500;
     color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
-/* Контейнер прогресса */
-.progress-container {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin: 20px auto;
+.collect-button:hover {
+    background: #d48800;
 }
 
-.progress-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: #2d2d2d;
-    overflow: hidden;
-}
-
-.progress {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: #ffcc00;
-    transform-origin: center;
-    border-radius: 50%;
-}
-
-.progress-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: #2d2d2d;
+/* Нижнее меню */
+.menu {
     display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.center-image {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-/* Кнопки внизу */
-.button-row {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    max-width: 300px;
+    justify-content: space-between;
     margin-top: 20px;
 }
 
-.round-button {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #ffffff;
+.menu-button {
+    flex: 1;
+    margin: 0 5px;
+    text-align: center;
+    background: #fff;
     border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    font-size: 24px;
-    color: #333;
+    border-radius: 10px;
+    padding: 10px 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    transition: transform 0.2s, background 0.3s;
+    transition: background 0.3s;
 }
 
-.round-button:hover {
-    transform: scale(1.1);
-    background: #ffcc00;
+.menu-button:hover {
+    background: #f0f0f0;
 }
 
-.main-button {
-    background: #ffd700;
+.menu-button .icon {
     font-size: 28px;
+    margin-bottom: 5px;
+    color: #f0a500;
 }
 
-.round-button:active {
-    transform: scale(0.9);
+.menu-button .label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Бургер-меню */
+.burger-menu {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 200px;
+    display: none;
+}
+
+.burger-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.burger-menu li {
+    margin: 10px 0;
+}
+
+.burger-menu a {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+}
+
+.burger-menu.hidden {
+    display: none;
 }
