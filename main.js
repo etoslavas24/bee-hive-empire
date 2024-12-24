@@ -1,11 +1,9 @@
-// Элементы интерфейса
 const incomeDisplay = document.getElementById('income');
 const totalBalanceDisplay = document.getElementById('balance');
 const collectButton = document.getElementById('collectButton');
 const burgerMenu = document.getElementById('burgerMenu');
 const settingsButton = document.getElementById('settingsButton');
 
-// Переменные
 let incomeRate = 0.0083; // Мед в секунду (0.5 в минуту)
 let totalBalance = parseFloat(localStorage.getItem('totalBalance')) || 0; // Общий баланс
 let currentHoney = parseFloat(localStorage.getItem('currentHoney')) || 0; // Текущий заработок меда
@@ -18,10 +16,8 @@ function startProduction() {
             currentHoney += incomeRate; // Увеличиваем текущий заработок
             incomeDisplay.textContent = currentHoney.toFixed(4); // Обновляем отображение текущего меда
             localStorage.setItem('currentHoney', currentHoney); // Сохраняем текущий заработок
-        } else {
-            alert("Хранилище заполнено! Соберите мед.");
         }
-    }, 1000); // Каждую секунду
+    }, 1000);
 }
 
 // Сбор меда
@@ -33,8 +29,6 @@ collectButton.addEventListener('click', () => {
         incomeDisplay.textContent = currentHoney.toFixed(4); // Сбрасываем отображение текущего меда
         localStorage.setItem('totalBalance', totalBalance); // Сохраняем общий баланс
         localStorage.setItem('currentHoney', currentHoney); // Сохраняем текущий заработок
-    } else {
-        alert("Нет меда для сбора!");
     }
 });
 
@@ -43,7 +37,5 @@ settingsButton.addEventListener('click', () => {
     burgerMenu.classList.toggle('hidden');
 });
 
-// Запуск игры
+// Запуск
 startProduction();
-totalBalanceDisplay.textContent = totalBalance.toFixed(4); // Отображаем начальный баланс
-incomeDisplay.textContent = currentHoney.toFixed(4); // Отображаем начальный заработок

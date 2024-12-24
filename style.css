@@ -124,7 +124,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80px; /* Фиксированная высота */
+    height: 90px; /* Одинаковая высота */
+    width: 100px; /* Одинаковая ширина */
 }
 
 .menu-button:hover {
